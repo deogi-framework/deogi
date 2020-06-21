@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  db:
+    image: mariadb:10.4.10
+    environment:
+      MYSQL_ROOT_PASSWORD: 1
+      MYSQL_ROOT_HOST: '%'
+    ports:
+        - 3306:3306
+    volumes:
+        - ./devenv/sql:/lc
+        - ./devenv/db:/var/lib/mysql
+    command: mysqld --init-file="/lc/init.sql"

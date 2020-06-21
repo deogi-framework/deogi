@@ -3,3 +3,4 @@ ormconfig.ts
 .env
 .jest
 coverage
+/devenv/db/*
