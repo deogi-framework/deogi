@@ -1,0 +1,8 @@
+module.exports = {
+  transform: {'^.+\\.ts?$': 'ts-jest'},
+  testEnvironment: 'node',
+  testRegex: '/tests/api/.*\\.(test|spec)?\\.(ts|tsx)$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  cacheDirectory: ".jest/cache",
+  maxWorkers: 1,
+};
