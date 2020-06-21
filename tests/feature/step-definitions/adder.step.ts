@@ -1,14 +1,24 @@
-import { binding, given, then, when} from 'cucumber-tsflow';
+import { binding, given, then, when, before, after } from 'cucumber-tsflow';
 import assert from 'assert';
-import Adder from '../../src/app/services/Adder';
+import Adder from '../../../src/app/services/Adder';
 
 @binding()
 export class AdderSteps {
 
     private a: number = 0;
     private b: number = 0;
-    
+    private r: number = 0;
     private adder: Adder;
+
+    // @before()
+    // public before(){
+    //     console.log("before...");
+    // }
+
+    // @after()
+    // public after(){
+    //     console.log("afer ...")
+    // }
 
     constructor(){
         this.adder = new Adder;
@@ -22,11 +32,11 @@ export class AdderSteps {
 
     @when('You add these two number.')
     public when() {
-        this.adder.add(this.a,this.b);
+        this.r = this.adder.add(this.a,this.b);
     }
 
     @then('You get {int} for result.')
     public then(expect: number) {
-        assert.strictEqual(this.adder.getResult(), expect);
+        assert.strictEqual(this.r, expect);
     }
 }

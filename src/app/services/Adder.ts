@@ -1,13 +1,5 @@
 export default class Adder {
-
-    protected result:number = 0;
-    
-    add(a:number,b:number){
-        this.result = a + b;
+    add(a:number,b:number):number{
+        return a+b
     }
-
-    getResult(){
-        return this.result;
-    }
-
 }
