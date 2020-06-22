@@ -1,4 +1,4 @@
-@db
+@create-post
 Feature: Post
 
   Scenario Outline: Publish posts

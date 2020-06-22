@@ -10,16 +10,6 @@ export class AdderSteps {
     private r: number = 0;
     private adder: Adder;
 
-    // @before()
-    // public before(){
-    //     console.log("before...");
-    // }
-
-    // @after()
-    // public after(){
-    //     console.log("afer ...")
-    // }
-
     constructor(){
         this.adder = new Adder;
     }

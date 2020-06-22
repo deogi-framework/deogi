@@ -10,18 +10,15 @@ export class CreatePostStep {
     post: Post;
     manager: EntityManager;
 
-    @before('db')
+    @before('create-post')
     public async before(){
-        console.log("before!!!");
-        
         await connect();
         this.manager = getManager();
     }
 
-    @after('db')
-    public async after(){
+    @after('create-post')
+    public async after() {
         await close();
-        console.log("after!!!");
     }
 
     @given('You write post on blog - title : {string} and description {string}.')
@@ -30,7 +27,6 @@ export class CreatePostStep {
         this.post = new Post();
         this.post.title = title;
         this.post.desc = desc;
-
     }
 
     @when('You save post.')
