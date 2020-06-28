@@ -1,5 +1,5 @@
 import { FactoryFor, EntityFactory } from 'typeorm-entity-factory'
-import Post from '../../../src/app/domains/post/entities/Post';
+import Post from '../../src/app/domains/post/entities/Post';
 
 @FactoryFor(Post)
 export class BasicPostFactory extends EntityFactory<Post> {
