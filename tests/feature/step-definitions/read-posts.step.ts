@@ -3,8 +3,8 @@ import assert from 'assert';
 import { connect, close } from '../../../src/infra/db-connections';
 import Post from '../../../src/app/domains/post/entities/Post';
 import { getManager, EntityManager, getConnection } from 'typeorm';
-import { getFactoryContainer } from '../__faker__';
-import { BasicPostFactory } from '../__faker__/post-factory';
+import { getFactoryContainer } from '../../__faker__';
+import { BasicPostFactory } from '../../__faker__/post-factory';
 
 @binding()
 export class ReadPostsStep {
