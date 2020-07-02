@@ -43,7 +43,7 @@ export class Bootloader {
 
     loadRoutes(){
         Routes.forEach(route => {
-            (this.app as any)[route.method](route.route, (req: express.Request, res: express.Response, next: NextFunction) => {
+            const handle = (req: express.Request, res: express.Response, next: NextFunction) => {
                 const result = Container.get(route.controller)[route.action](req, res, next);
                 if (result instanceof Promise) {
                     result.then(result => {
@@ -51,13 +51,22 @@ export class Bootloader {
                             next(result)
                         else if(result !== null && result !== undefined)
                             res.send(result)
+                            next();
                     }).catch(err => {
                         next(err)
                     })
                 } else if (result !== null && result !== undefined) {
                     res.json(result);
                 }
-            });
+            };
+            
+            const app = (this.app as any);
+            const rr = route.route;
+            
+            if(route.befores && route.befores.length > 0) app.use(rr, route.befores);    
+            app[route.method](rr, handle)
+            if(route.afters && route.afters.length > 0) app.use(rr, route.afters);
+                
         });
     }
 
